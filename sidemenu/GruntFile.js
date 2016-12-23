@@ -99,7 +99,10 @@ module.exports = function(grunt) {
                 files: ['src/resources/css/*.css'],
                 tasks: ['concat:css']
             }
-        }
+        },
+		ngdocs: {
+            all: ['src/**/*.js']
+		}
     });
 
 	//npm tasks
@@ -113,6 +116,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-ngdocs');
 
 	//tasks
 	grunt.registerTask('default', 'Default Task Alias', 

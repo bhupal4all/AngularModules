@@ -1,0 +1,46 @@
+<h1><code ng:non-bindable="">ngMdSideMenu</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">SideMenu</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="sidemenu-directive-page sidemenu-directive-ngmdsidemenu-page"><p>This is contins section of menu </p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;ng-md-side-menu
+       ng-model="{array}"
+       ng-side-menu-open="{boolean}"
+       ng-show-loading="{boolean}"
+       ng-is-error="{boolean}"&gt;
+&lt;/ng-md-side-menu&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ngModel</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="sidemenu-directive-page sidemenu-directive-ngmdsidemenu-page"><p>Array for list Menu Items</p>
+</div></td></tr><tr><td>ngSideMenuOpen</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sidemenu-directive-page sidemenu-directive-ngmdsidemenu-page"><p>To show entire menu</p>
+</div></td></tr><tr><td>ngShowLoading</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sidemenu-directive-page sidemenu-directive-ngmdsidemenu-page"><p>To show loading messsage, if this sets, then menu wont be displayed</p>
+</div></td></tr><tr><td>ngIsError</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sidemenu-directive-page sidemenu-directive-ngmdsidemenu-page"><p>is there any error while loading the menu and results empty</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="sidemenu-directive-page sidemenu-directive-ngmdsidemenu-page"><h4 id="example_source">Source</h4>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html" source-edit-css="" source-edit-js="script.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html" ng-html-wrap-loaded=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html">
+        
+<md-sidenav ng-if='!error' md-is-locked-open="sideMenuOpen" class='md-whiteframe-4dp'>
+<ng-md-side-menu ng-model='itemsMenu' ng-side-menu-open='sideMenuOpen' ng-show-loading='menuLoading'></ng-md-side-menu>
+</md-sidenav>
+    </script>
+</div>
+<div class="tab-pane" title="script.js">
+<pre class="prettyprint linenums" ng-set-text="script.js"></pre>
+<script type="text/ng-template" id="script.js">
+
+        </script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html" ng-eval-javascript="script.js"></div>
+</div></div>
+</div>
