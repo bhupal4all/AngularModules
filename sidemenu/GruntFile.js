@@ -1,11 +1,14 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+		clean: {
+			build: ['temp']
+		},
         concat: {
             options: {
-                seperator: "\n\n"
-                // stripBanners: true,
-                // banner: '/* <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */\n\n'
+                seperator: "\n\n",
+                stripBanners: true,
+                banner: '/* <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */\n\n'
             },
             dist: {
                 src: ['temp/**/*.annotated.js'],
@@ -48,7 +51,7 @@ module.exports = function(grunt) {
                 },
                 {
                         expand: true,
-                        cwd: 'src/generated',
+                        cwd: 'temp',
                         src: ['*.js','!**/*.annotated.js'],
                         falltern: true,
                         dest: 'temp',
@@ -90,11 +93,11 @@ module.exports = function(grunt) {
         watch: {
             scripts: {
                 files: ['src/resources/js/**/*.js'],
-                tasks: ['concat:dist']
+                tasks: ['ngtemplates','ngAnnotate','concat','uglify']
             },
             styles: {
-                files: ['src/resources/css/*.scss'],
-                tasks: ['sass']
+                files: ['src/resources/css/*.css'],
+                tasks: ['concat:css']
             }
         }
     });
@@ -109,6 +112,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ng-annotate'); 
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	//tasks
 	grunt.registerTask('default', 'Default Task Alias', 
@@ -116,6 +120,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('build', 'Build the application', 
 		[
+			'clean',
             'ngtemplates',
             'jshint',
             'ngAnnotate',
