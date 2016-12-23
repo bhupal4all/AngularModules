@@ -1,0 +1,19 @@
+{
+  "name": "sidemenu",
+  "version": "1.0.0",
+  "description": "angular material - side menu",
+  "main": "index.js",
+  "authors": [
+    "rgangavarapu"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "sidemenu"
+  ],
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "angularjs#^1.6.0",
+    "angular-material": "^1.1.1"
+  }
+}
