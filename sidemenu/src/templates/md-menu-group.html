@@ -1,12 +1,12 @@
-        <md-menu-item>
-          <md-button ng-click='toggleButton()' class='md-primary'>
-            <div layout="row" flex >
-              <md-icon md-menu-align-target class="material-icons">menu</md-icon>
-              <p flex>{{ngModel.title}}</p>
-              <md-icon md-menu-align-target class="material-icons" ng-show='showMore'>remove</md-icon>
-              <md-icon md-menu-align-target class="material-icons" ng-hide='showMore'>add</md-icon>
-            </div>
-          </md-button>
-        </md-menu-item>
-        <md-divider></md-divider>
-        <ng-md-menu ng-class='menu' ng-filter='ngFilter' ng-show='showMenu() || ngFilter' ng-model='ngModel.pages'></ng-md-menu>
+<md-menu-item>
+	<md-button ng-click='toggleButton()' class='md-primary'>
+		<div layout="row" flex >
+			<md-icon md-menu-align-target class="material-icons">menu</md-icon>
+			<p flex>{{ngModel.title}}</p>
+			<md-icon md-menu-align-target class="material-icons" ng-show='showMore'>remove</md-icon>
+			<md-icon md-menu-align-target class="material-icons" ng-hide='showMore'>add</md-icon>
+		</div>
+	</md-button>
+</md-menu-item>
+<md-divider/>
+<ng-md-menu ng-class='menu' ng-filter='ngFilter' ng-show='showMenu() || ngFilter' ng-model='ngModel.pages'/>

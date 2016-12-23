@@ -1,8 +1,5 @@
-/*
- AngularJS v1.6.0
- (c) 2010-2016 Google, Inc. http://angularjs.org
- License: MIT
-*/
+/* sidemenu - v1.0.0 - 2016-12-23 */
+
 (function(A){'use strict';function H(a,b){b=b||Error;return function(){var d=arguments[0],c;c="["+(a?a+":":"")+d+"] http://errors.angularjs.org/1.6.0/"+(a?a+"/":"")+d;for(d=1;d<arguments.length;d++){c=c+(1==d?"?":"&")+"p"+(d-1)+"=";var f=encodeURIComponent,e;e=arguments[d];e="function"==typeof e?e.toString().replace(/ \{[\s\S]*$/,""):"undefined"==typeof e?"undefined":"string"!=typeof e?JSON.stringify(e):e;c+=f(e)}return new b(c)}}function ta(a){if(null==a||Wa(a))return!1;if(G(a)||y(a)||F&&a instanceof
 F)return!0;var b="length"in Object(a)&&a.length;return W(b)&&(0<=b&&(b-1 in a||a instanceof Array)||"function"===typeof a.item)}function q(a,b,d){var c,f;if(a)if(B(a))for(c in a)"prototype"!==c&&"length"!==c&&"name"!==c&&a.hasOwnProperty(c)&&b.call(d,a[c],c,a);else if(G(a)||ta(a)){var e="object"!==typeof a;c=0;for(f=a.length;c<f;c++)(e||c in a)&&b.call(d,a[c],c,a)}else if(a.forEach&&a.forEach!==q)a.forEach(b,d,a);else if(Cc(a))for(c in a)b.call(d,a[c],c,a);else if("function"===typeof a.hasOwnProperty)for(c in a)a.hasOwnProperty(c)&&
 b.call(d,a[c],c,a);else for(c in a)va.call(a,c)&&b.call(d,a[c],c,a);return a}function Dc(a,b,d){for(var c=Object.keys(a).sort(),f=0;f<c.length;f++)b.call(d,a[c[f]],c[f]);return c}function Ec(a){return function(b,d){a(d,b)}}function he(){return++qb}function Rb(a,b,d){for(var c=a.$$hashKey,f=0,e=b.length;f<e;++f){var g=b[f];if(E(g)||B(g))for(var h=Object.keys(g),k=0,l=h.length;k<l;k++){var m=h[k],n=g[m];d&&E(n)?ea(n)?a[m]=new Date(n.valueOf()):Xa(n)?a[m]=new RegExp(n):n.nodeName?a[m]=n.cloneNode(!0):
@@ -328,11 +325,6 @@ mediumDate:"MMM d, y",mediumTime:"h:mm:ss a","short":"M/d/yy h:mm a",shortDate:"
 e?"one":"other"}})}]),F(function(){oe(A.document,Lc)}))})(window);!window.angular.$$csp().noInlineStyle&&window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 //# sourceMappingURL=angular.min.js.map
 
-/*
- AngularJS v1.6.0
- (c) 2010-2016 Google, Inc. http://angularjs.org
- License: MIT
-*/
 (function(U,C){'use strict';function Ea(a,b,c){if(!a)throw Oa("areq",b||"?",c||"required");return a}function Fa(a,b){if(!a&&!b)return"";if(!a)return b;if(!b)return a;X(a)&&(a=a.join(" "));X(b)&&(b=b.join(" "));return a+" "+b}function Pa(a){var b={};a&&(a.to||a.from)&&(b.to=a.to,b.from=a.from);return b}function Y(a,b,c){var d="";a=X(a)?a:a&&G(a)&&a.length?a.split(/\s+/):[];r(a,function(a,e){a&&0<a.length&&(d+=0<e?" ":"",d+=c?b+a:a+b)});return d}function Qa(a){if(a instanceof w)switch(a.length){case 0:return a;
 case 1:if(1===a[0].nodeType)return a;break;default:return w(ua(a))}if(1===a.nodeType)return w(a)}function ua(a){if(!a[0])return a;for(var b=0;b<a.length;b++){var c=a[b];if(1===c.nodeType)return c}}function Ra(a,b,c){r(b,function(b){a.addClass(b,c)})}function Sa(a,b,c){r(b,function(b){a.removeClass(b,c)})}function Z(a){return function(b,c){c.addClass&&(Ra(a,b,c.addClass),c.addClass=null);c.removeClass&&(Sa(a,b,c.removeClass),c.removeClass=null)}}function oa(a){a=a||{};if(!a.$$prepared){var b=a.domOperation||
 N;a.domOperation=function(){a.$$domOperationFired=!0;b();b=N};a.$$prepared=!0}return a}function ha(a,b){Ga(a,b);Ha(a,b)}function Ga(a,b){b.from&&(a.css(b.from),b.from=null)}function Ha(a,b){b.to&&(a.css(b.to),b.to=null)}function V(a,b,c){var d=b.options||{};c=c.options||{};var f=(d.addClass||"")+" "+(c.addClass||""),e=(d.removeClass||"")+" "+(c.removeClass||"");a=Ta(a.attr("class"),f,e);c.preparationClasses&&(d.preparationClasses=ea(c.preparationClasses,d.preparationClasses),delete c.preparationClasses);
@@ -386,11 +378,6 @@ b);return l}}}}}]}]).provider("$$animateJsDriver",["$$animationProvider",functio
 return f}}}else return d(a)}}]}])})(window,window.angular);
 //# sourceMappingURL=angular-animate.min.js.map
 
-/*
- AngularJS v1.6.0
- (c) 2010-2016 Google, Inc. http://angularjs.org
- License: MIT
-*/
 (function(s,p){'use strict';var c="BUTTON A INPUT TEXTAREA SELECT DETAILS SUMMARY".split(" "),h=function(a,b){if(-1!==b.indexOf(a[0].nodeName))return!0};p.module("ngAria",["ng"]).provider("$aria",function(){function a(a,c,n,k){return function(d,f,e){var g=e.$normalize(c);!b[g]||h(f,n)||e[g]||d.$watch(e[a],function(a){a=k?!a:!!a;f.attr(c,a)})}}var b={ariaHidden:!0,ariaChecked:!0,ariaReadonly:!0,ariaDisabled:!0,ariaRequired:!0,ariaInvalid:!0,ariaValue:!0,tabindex:!0,bindKeydown:!0,bindRoleForClick:!0};
 this.config=function(a){b=p.extend(b,a)};this.$get=function(){return{config:function(a){return b[a]},$$watchExpr:a}}}).directive("ngShow",["$aria",function(a){return a.$$watchExpr("ngShow","aria-hidden",[],!0)}]).directive("ngHide",["$aria",function(a){return a.$$watchExpr("ngHide","aria-hidden",[],!1)}]).directive("ngValue",["$aria",function(a){return a.$$watchExpr("ngValue","aria-checked",c,!1)}]).directive("ngChecked",["$aria",function(a){return a.$$watchExpr("ngChecked","aria-checked",c,!1)}]).directive("ngReadonly",
 ["$aria",function(a){return a.$$watchExpr("ngReadonly","aria-readonly",c,!1)}]).directive("ngRequired",["$aria",function(a){return a.$$watchExpr("ngRequired","aria-required",c,!1)}]).directive("ngModel",["$aria",function(a){function b(b,k,d,f){return a.config(k)&&!d.attr(b)&&(f||!h(d,c))}function l(a,b){return!b.attr("role")&&b.attr("type")===a&&!h(b,c)}function m(a,b){var d=a.type,f=a.role;return"checkbox"===(d||f)||"menuitemcheckbox"===f?"checkbox":"radio"===(d||f)||"menuitemradio"===f?"radio":
@@ -401,11 +388,6 @@ c.$validators.required&&b("aria-required","ariaRequired",e,!1)&&g.$observe("requ
 ["$aria",function(a){return function(b,l,m){!a.config("tabindex")||l.attr("tabindex")||h(l,c)||l.attr("tabindex",0)}}])})(window,window.angular);
 //# sourceMappingURL=angular-aria.min.js.map
 
-/*
- AngularJS v1.6.0
- (c) 2010-2016 Google, Inc. http://angularjs.org
- License: MIT
-*/
 (function(y,l){'use strict';function w(){return["$animate",function(t){return{restrict:"AE",transclude:"element",priority:1,terminal:!0,require:"^^ngMessages",link:function(u,n,a,c,f){var e=n[0],d,r=a.ngMessage||a.when;a=a.ngMessageExp||a.whenExp;var k=function(a){d=a?p(a)?a:a.split(/[\s,]+/):null;c.reRender()};a?(k(u.$eval(a)),u.$watchCollection(a,k)):k(r);var g,s;c.register(e,s={test:function(a){var m=d;a=m?p(m)?0<=m.indexOf(a):m.hasOwnProperty(a):void 0;return a},attach:function(){g||f(function(a,
 m){t.enter(a,null,n);g=a;var d=g.$$attachId=c.getAttachId();g.on("$destroy",function(){g&&g.$$attachId===d&&(c.deregister(e),s.detach());m.$destroy()})})},detach:function(){if(g){var a=g;g=null;t.leave(a)}}})}}}]}var v,p,q,x;l.module("ngMessages",[],function(){v=l.forEach;p=l.isArray;q=l.isString;x=l.element}).directive("ngMessages",["$animate",function(t){function u(a,c){return q(c)&&0===c.length||n(a.$eval(c))}function n(a){return q(a)?a.length:!!a}return{require:"ngMessages",restrict:"AE",controller:["$element",
 "$scope","$attrs",function(a,c,f){function e(a,c){for(var b=c,d=[];b&&b!==a;){var h=b.$$ngMessageNode;if(h&&h.length)return g[h];b.childNodes.length&&-1===d.indexOf(b)?(d.push(b),b=b.childNodes[b.childNodes.length-1]):b.previousSibling?b=b.previousSibling:(b=b.parentNode,d.push(b))}}var d=this,r=0,k=0;this.getAttachId=function(){return k++};var g=this.messages={},s,l;this.render=function(m){m=m||{};s=!1;l=m;for(var g=u(c,f.ngMessagesMultiple)||u(c,f.multiple),b=[],e={},h=d.head,r=!1,k=0;null!=h;){k++;

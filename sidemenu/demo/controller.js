@@ -69,5 +69,9 @@
     $scope.toggleSidenav = function(nav) {
       $mdSidenav(nav).toggle();
     };
+	
+	$scope.sideMenuOpen = true;
+	$scope.menuLoading = false;
+
   }
 }());

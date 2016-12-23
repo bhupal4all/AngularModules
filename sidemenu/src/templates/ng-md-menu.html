@@ -1,11 +1,11 @@
-        <md-list>
-          <md-menu-item ng-repeat="page in ngModel | filter:ngFilter">
-            <md-button class='md-primary'>
-              <div layout="row" flex>
-                <p flex>{{page.label}}</p>
-                <md-icon md-menu-align-target class="material-icons">{{page.icon}}</md-icon>
-              </div>
-            </md-button>
-          </md-menu-item>
-          <md-divider></md-divider>
-        </md-list>
+<md-list>
+	<md-menu-item ng-repeat="page in ngModel | filter:ngFilter">
+		<md-button class='md-primary'>
+			<div layout="row" flex>
+				<p flex>{{page.label}}</p>
+				<md-icon md-menu-align-target class="material-icons">{{page.icon}}</md-icon>
+			</div>
+		</md-button>
+	</md-menu-item>
+	<md-divider/>
+</md-list>
