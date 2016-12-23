@@ -37,12 +37,22 @@
   <div layout="row" flex="" class="max-height">
     <!-- sidenav -->
 	<md-sidenav ng-if='!error' md-is-locked-open="sideMenuOpen" class='md-whiteframe-4dp'>
-		<ng-md-side-menu ng-model='itemsMenu' ng-side-menu-open='sideMenuOpen' ng-show-loading='menuLoading'></ng-md-side-menu>
+		<ng-md-side-menu ng-model='itemsMenu' ng-is-error='showError' ng-side-menu-open='sideMenuOpen' ng-show-loading='menuLoading'></ng-md-side-menu>
 	</md-sidenav>
 	
     <!-- main content -->
     <div layout="column" flex id="content">
       <md-content layout="column" flex="" class="md-padding">
+		<md-checkbox ng-model="menuLoading">
+			Loading menu
+		</md-checkbox>
+		<md-checkbox ng-model="showError" >
+			Show Error
+		</md-checkbox>		
+		<md-checkbox ng-model="sideMenuOpen" >
+			Show Sidemenu
+		</md-checkbox>
+		  
 		<div ui-view ></div>
       </md-content>
     </div>

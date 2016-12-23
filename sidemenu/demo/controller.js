@@ -101,6 +101,11 @@
 	
 	$scope.sideMenuOpen = true;
 	$scope.menuLoading = false;
+	$scope.showError = false;
+	
+	$scope.toggleMenuLoading = function() {
+		$scope.menuLoading = !$scope.menuLoading;
+	};
 
   }
 }());

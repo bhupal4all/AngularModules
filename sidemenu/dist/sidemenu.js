@@ -121,16 +121,7 @@ angular.module('SideMenu')
 				ngIsError: '=?'
 			},
 			// dont add md-sidenav here as whiteframe classes are not applied properly
-			templateUrl: 'templates/ng-side-menu.html',
-			link: {
-				post: function($scope, ielement, iattrs) {
-					$scope.ngSideMenuOpen = !(iattrs.ngSideMenuOpen !== undefined && iattrs.ngSideMenuOpen !== undefined && iattrs.ngSideMenuOpen === true);
-					
-					$scope.ngShowLoading = (iattrs.ngShowLoading !== undefined && iattrs.ngShowLoading !== undefined && iattrs.ngShowLoading === true);
-					
-					$scope.ngIsError = (iattrs.ngIsError !== undefined && iattrs.ngIsError !== undefined && iattrs.ngIsError === true);
-				}
-			}
+			templateUrl: 'templates/ng-side-menu.html'
 		};
 	})
 	;
