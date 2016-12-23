@@ -43,11 +43,27 @@
     <!-- main content -->
     <div layout="column" flex id="content">
       <md-content layout="column" flex="" class="md-padding">
-
+		<div ui-view ></div>
       </md-content>
     </div>
   </div>
 </div>
 
+
+	<script type="text/ng-template" id="templates/main.html">
+		<h1>this is main page</h1>
+	</script>
+
+	<script type="text/ng-template" id="templates/list.html">
+		<h1>List All Contents</h1>
+	</script>
+			
+	<script type="text/ng-template" id="templates/add.html">
+		<h1>Add new contents</h1>
+	</script>
+	
+	<script type="text/ng-template" id="templates/nav.html">
+		<h1>Sample naviation</h1>
+	</script>
 </body>
 </html>

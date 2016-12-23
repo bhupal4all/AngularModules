@@ -1,9 +1,9 @@
 <md-list>
 	<md-menu-item ng-repeat="page in ngModel | filter:ngFilter">
-		<md-button class='md-primary'>
+		<md-button ng-disabled='page.link === undefined' ui-sref="{{page.link === undefined ? '/' : page.link}}" class='md-primary' ui-sref-active="active">
 			<div layout="row" flex>
 				<p flex>{{page.label}}</p>
-				<md-icon md-menu-align-target class="material-icons">{{page.icon}}</md-icon>
+				<md-icon md-menu-align-target class="material-icons ">{{page.icon}}</md-icon>
 			</div>
 		</md-button>
 	</md-menu-item>

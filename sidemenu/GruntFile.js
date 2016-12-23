@@ -20,7 +20,8 @@ module.exports = function(grunt) {
                     'bower_components/angular-animate/angular-animate.min.js',
                     'bower_components/angular-aria/angular-aria.min.js',
                     'bower_components/angular-messages/angular-messages.min.js',
-                    'bower_components/angular-material/angular-material.min.js'
+                    'bower_components/angular-material/angular-material.min.js',
+                    'bower_components/angular-ui-router/release/angular-ui-router.min.js'
                 ],
                 dest: 'dist/<%= pkg.name %>-dep.js'
             },
@@ -92,7 +93,7 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['src/resources/js/**/*.js'],
+                files: ['src/resources/js/**/*.js', 'src/templates/**/*.html'],
                 tasks: ['ngtemplates','ngAnnotate','concat','uglify']
             },
             styles: {

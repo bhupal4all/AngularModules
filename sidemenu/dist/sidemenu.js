@@ -1,7 +1,29 @@
 /* sidemenu - v1.0.0 - 2016-12-23 */
 
+/**
+ * @ngdoc object
+ * @name SideMenu
+ * @description
+ *
+ * This requires Angular Material
+ * 
+ * @requires angular
+ * @requires angular-material
+ */
+
 angular.module('SideMenu', []);
 angular.module('SideMenu')
+	/**
+	 * @ngdoc directive
+	 * @name SideMenu.directive:ngMdMenu
+	 * @restrict E
+	 * @scope
+	 * @description
+	 * this would list all menu items
+	 * 
+	 * @param {array} ngModel Array for list Menu Items
+	 * @param {string} ngFilter To filter the menu items
+	 */
     .directive('ngMdMenu', ['$templateCache', function($templateCache){
 		return {
 			restrict: 'E',
@@ -13,6 +35,13 @@ angular.module('SideMenu')
 		};		
 	}])
 	
+	/**
+	 * @ngdoc controller
+	 * @name SideMenu.controller:NgMdMenuGroupCtrl
+	 * @description
+	 * This is the controller for ng-md-menu-group tag
+	 *
+	 */
 	.controller('NgMdMenuGroupCtrl', ['$scope', '$templateCache', function($scope, $templateCache) {
 		$scope.showMenu = function() {
 			return $scope.showMore;
@@ -22,7 +51,20 @@ angular.module('SideMenu')
 			$scope.showMore = !$scope.showMore;
 		};		
 	}])
-	
+
+	/**
+	 * @ngdoc directive
+	 * @name SideMenu.directive:ngMdMenuGroup
+	 * @restrict E
+	 * @scope
+	 * @description
+	 * This is group menu which contains list of items
+	 * 
+	 * @param {array} ngModel Array for list Menu Items
+	 * @param {boolean} ngShow To show the menu group
+	 * @param {boolean} ngOpen To the menu in expand mode
+	 * @param {string} ngFilter To filter the menu items
+	 */
     .directive('ngMdMenuGroup', ['$templateCache', function($templateCache){
 		return {
 			restrict: 'E',
@@ -41,7 +83,34 @@ angular.module('SideMenu')
 			}
 		};		
 	}])	
-	
+
+	/**
+	 * @ngdoc directive
+	 * @name SideMenu.directive:ngMdSideMenu
+	 * @restrict E
+	 * @scope
+	 * @description
+	 * This is contins section of menu 
+	 * 
+	 * @param {array} ngModel Array for list Menu Items
+	 * @param {boolean} ngSideMenuOpen To show entire menu
+	 * @param {boolean} ngShowLoading To show loading messsage, if this sets, then menu wont be displayed
+	 * @param {boolean} ngIsError is there any error while loading the menu and results empty
+	 * 
+	 * @example
+    <doc:example>
+        <doc:source>
+            <script>
+
+            </script>
+			<md-sidenav ng-if='!error' md-is-locked-open="sideMenuOpen" class='md-whiteframe-4dp'>
+				<ng-md-side-menu ng-model='itemsMenu' ng-side-menu-open='sideMenuOpen' ng-show-loading='menuLoading'></ng-md-side-menu>
+			</md-sidenav>
+        </doc:source>
+    </doc:example>
+	 * 
+	 */
+
 	.directive('ngMdSideMenu', function(){
 		return {
 			restrict: 'E',
@@ -55,31 +124,31 @@ angular.module('SideMenu')
 			templateUrl: 'templates/ng-side-menu.html',
 			link: {
 				post: function($scope, ielement, iattrs) {
-					$scope.ngSideMenuOpen = !(iattrs.ngSideMenuOpen !== undefined && iattrs.ngSideMenuOpen !== undefined && iattrs.ngSideMenuOpen == true);
+					$scope.ngSideMenuOpen = !(iattrs.ngSideMenuOpen !== undefined && iattrs.ngSideMenuOpen !== undefined && iattrs.ngSideMenuOpen === true);
 					
-					$scope.ngShowLoading = (iattrs.ngShowLoading !== undefined && iattrs.ngShowLoading !== undefined && iattrs.ngShowLoading == true);
+					$scope.ngShowLoading = (iattrs.ngShowLoading !== undefined && iattrs.ngShowLoading !== undefined && iattrs.ngShowLoading === true);
 					
-					$scope.ngIsError = (iattrs.ngIsError !== undefined && iattrs.ngIsError !== undefined && iattrs.ngIsError == true);
+					$scope.ngIsError = (iattrs.ngIsError !== undefined && iattrs.ngIsError !== undefined && iattrs.ngIsError === true);
 				}
 			}
-		}
+		};
 	})
 	;
 angular.module('SideMenu').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('templates/md-menu-group.html',
-    "<md-menu-item><md-button ng-click=\"toggleButton()\" class=\"md-primary\"><div layout=\"row\" flex><md-icon md-menu-align-target class=\"material-icons\">menu</md-icon><p flex>{{ngModel.title}}</p><md-icon md-menu-align-target class=\"material-icons\" ng-show=\"showMore\">remove</md-icon><md-icon md-menu-align-target class=\"material-icons\" ng-hide=\"showMore\">add</md-icon></div></md-button></md-menu-item><md-divider><ng-md-menu ng-class=\"menu\" ng-filter=\"ngFilter\" ng-show=\"showMenu() || ngFilter\" ng-model=\"ngModel.pages\">"
+    "<md-menu-item><md-button ng-click=\"toggleButton()\" class=\"md-primary\"><div layout=\"row\" flex><md-icon md-menu-align-target class=\"material-icons\">menu</md-icon><p flex>{{ngModel.title}}</p><md-icon md-menu-align-target class=\"material-icons\" ng-show=\"showMore || ngFilter\">remove</md-icon><md-icon md-menu-align-target class=\"material-icons\" ng-hide=\"showMore || ngFilter\">add</md-icon></div></md-button></md-menu-item><md-divider><ng-md-menu ng-class=\"menu\" ng-filter=\"ngFilter\" ng-show=\"showMenu() || ngFilter\" ng-model=\"ngModel.pages\">"
   );
 
 
   $templateCache.put('templates/ng-md-menu.html',
-    "<md-list><md-menu-item ng-repeat=\"page in ngModel | filter:ngFilter\"><md-button class=\"md-primary\"><div layout=\"row\" flex><p flex>{{page.label}}</p><md-icon md-menu-align-target class=\"material-icons\">{{page.icon}}</md-icon></div></md-button></md-menu-item><md-divider></md-list>"
+    "<md-list><md-menu-item ng-repeat=\"page in ngModel | filter:ngFilter\"><md-button ng-disabled=\"page.link === undefined\" ui-sref=\"{{page.link === undefined ? '/' : page.link}}\" class=\"md-primary\" ui-sref-active=\"active\"><div layout=\"row\" flex><p flex>{{page.label}}</p><md-icon md-menu-align-target class=\"material-icons\">{{page.icon}}</md-icon></div></md-button></md-menu-item><md-divider></md-list>"
   );
 
 
   $templateCache.put('templates/ng-side-menu.html',
-    "<style>.search-input { \r" +
+    "<div><style>.search-input { \r" +
     "\n" +
     "	padding-left: 20px;\r" +
     "\n" +
@@ -155,7 +224,7 @@ angular.module('SideMenu').run(['$templateCache', function($templateCache) {
     "\n" +
     "	margin: 0px 0px;\r" +
     "\n" +
-    "}</style><section ng-show=\"ngShowLoading\"><md-menu-item><span>Menu is Loading, Please wait</span><md-progress-circular md-mode=\"indeterminate\" md-diameter=\"20px\"></md-menu-item></section><div ng-show=\"!ngShowLoading && !ngIsError\"><section><div layout=\"row\" layout-align=\"start center\" flex class=\"search-input\"><span class=\"bt-search\"><i class=\"material-icons md-fab-icon\">search</i></span><md-input-container md-no-float><label>Search</label><input flex ng-model=\"filterMenu\"><div class=\"hint\"><span ng-hide=\"filterMenu\">Search over below Menu...</span> <span ng-show=\"filterMenu\" class=\"active\">To clear search, click on 'X' button</span></div><md-button ng-show=\"filterMenu\" ng-click=\"filterMenu=''\" class=\"md-icon-button close-button\"><i class=\"material-icons md-fab-icon\">close</i></md-button></md-input-container></div></section><section ng-repeat=\"menuItem in ngModel track by $index\"><ng-md-menu-group ng-filter=\"filterMenu\" ng-model=\"menuItem\"></section></div>"
+    "}</style><section ng-show=\"ngShowLoading\"><md-menu-item><span>Menu is Loading, Please wait</span><md-progress-circular md-mode=\"indeterminate\" md-diameter=\"20px\"></md-menu-item></section><div ng-show=\"!ngShowLoading && !ngIsError\"><section><div layout=\"row\" layout-align=\"start center\" flex class=\"search-input\"><span class=\"bt-search\"><i class=\"material-icons md-fab-icon\">search</i></span><md-input-container md-no-float><label>Search</label><input flex ng-model=\"filterMenu\"><div class=\"hint\"><span ng-hide=\"filterMenu\">Search over below Menu...</span> <span ng-show=\"filterMenu\" class=\"active\">To clear search, click on 'X' button</span></div><md-button ng-show=\"filterMenu\" ng-click=\"filterMenu=''\" class=\"md-icon-button close-button\"><i class=\"material-icons md-fab-icon\">close</i></md-button></md-input-container></div></section><section ng-repeat=\"menuItem in ngModel track by $index\"><ng-md-menu-group ng-filter=\"filterMenu\" ng-model=\"menuItem\"></section></div></div>"
   );
 
 }]);

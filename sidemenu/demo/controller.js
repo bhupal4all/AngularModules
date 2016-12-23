@@ -1,12 +1,41 @@
 (function() {
   // config app ####################
   angular
-    .module('MyApp', ['ngMaterial', 'ngAnimate', 'SideMenu'])
+    .module('MyApp', ['ngMaterial', 'ngAnimate', 'SideMenu','ui.router'])
     .controller('AppController', ['$scope', '$mdSidenav', AppController]);
 
   // config theme ##################
   angular
     .module('MyApp')
+	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+		$urlRouterProvider.otherwise('/');
+
+		$stateProvider
+			.state('home', {
+				url: '/',
+				views: {
+					'' : { templateUrl:'templates/main.html' },
+				}
+			})
+			.state('list', {
+				url: '/list',
+				views: {
+					'' : { templateUrl:'templates/list.html' }
+				}
+			})
+			.state('add', {
+				url: '/add',
+				views: {
+					'' : { templateUrl:'templates/add.html' }
+				}
+			})
+			.state('nav', {
+				url: '/nav',
+				views: {
+					'' : { templateUrl:'templates/nav.html' }
+				}
+			});
+	}])
     .config(function($mdThemingProvider) {
       $mdThemingProvider
         .theme('default')
@@ -39,7 +68,7 @@
         'link': 'add'
       }, {
         'icon': 'list',
-        'label': 'List All Queries',
+        'label': 'Sample navigation',
         'link': 'nav'
       }, {
         'icon': 'add',
@@ -58,7 +87,7 @@
         'link': 'add'
       }, {
         'icon': 'list',
-        'label': 'List All Queries',
+        'label': 'Sample navigation',
         'link': 'nav'
       }, {
         'icon': 'add',

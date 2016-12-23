@@ -3,8 +3,8 @@
 		<div layout="row" flex >
 			<md-icon md-menu-align-target class="material-icons">menu</md-icon>
 			<p flex>{{ngModel.title}}</p>
-			<md-icon md-menu-align-target class="material-icons" ng-show='showMore'>remove</md-icon>
-			<md-icon md-menu-align-target class="material-icons" ng-hide='showMore'>add</md-icon>
+			<md-icon md-menu-align-target class="material-icons" ng-show='showMore || ngFilter'>remove</md-icon>
+			<md-icon md-menu-align-target class="material-icons" ng-hide='showMore || ngFilter'>add</md-icon>
 		</div>
 	</md-button>
 </md-menu-item>
