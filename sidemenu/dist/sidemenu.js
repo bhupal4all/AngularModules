@@ -1,4 +1,4 @@
-/* sidemenu - v1.0.0 - 2016-12-23 */
+/* sidemenu - v1.0.0 - 2017-02-03 */
 
 /**
  * @ngdoc object
@@ -134,7 +134,7 @@ angular.module('SideMenu').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('templates/ng-md-menu.html',
-    "<md-list><md-menu-item ng-repeat=\"page in ngModel | filter:ngFilter\"><md-button ng-disabled=\"page.link === undefined\" ui-sref=\"{{page.link === undefined ? '/' : page.link}}\" class=\"md-primary\" ui-sref-active=\"active\"><div layout=\"row\" flex><p flex>{{page.label}}</p><md-icon md-menu-align-target class=\"material-icons\">{{page.icon}}</md-icon></div></md-button></md-menu-item><md-divider></md-list>"
+    "<md-list><md-menu-item ng-repeat=\"page in ngModel | orderBy: 'order' | filter:ngFilter\" ng-init=\"page.order=(page.order===undefined)?0:page.order\"><md-button ng-disabled=\"page.link === undefined\" ui-sref=\"{{page.link === undefined ? '/' : page.link}}\" class=\"md-primary\" ui-sref-active=\"active\"><div layout=\"row\" flex><p flex>{{page.label}}</p><md-icon md-menu-align-target class=\"material-icons\">{{page.icon}}</md-icon></div></md-button></md-menu-item><md-divider></md-list>"
   );
 
 
@@ -215,7 +215,7 @@ angular.module('SideMenu').run(['$templateCache', function($templateCache) {
     "\n" +
     "	margin: 0px 0px;\r" +
     "\n" +
-    "}</style><section ng-show=\"ngShowLoading\"><md-menu-item><span>Menu is Loading, Please wait</span><md-progress-circular md-mode=\"indeterminate\" md-diameter=\"20px\"></md-menu-item></section><div ng-show=\"!ngShowLoading && !ngIsError\"><section><div layout=\"row\" layout-align=\"start center\" flex class=\"search-input\"><span class=\"bt-search\"><i class=\"material-icons md-fab-icon\">search</i></span><md-input-container md-no-float><label>Search</label><input flex ng-model=\"filterMenu\"><div class=\"hint\"><span ng-hide=\"filterMenu\">Search over below Menu...</span> <span ng-show=\"filterMenu\" class=\"active\">To clear search, click on 'X' button</span></div><md-button ng-show=\"filterMenu\" ng-click=\"filterMenu=''\" class=\"md-icon-button close-button\"><i class=\"material-icons md-fab-icon\">close</i></md-button></md-input-container></div></section><section ng-repeat=\"menuItem in ngModel track by $index\"><ng-md-menu-group ng-filter=\"filterMenu\" ng-model=\"menuItem\"></section></div></div>"
+    "}</style><section ng-show=\"ngShowLoading\"><md-menu-item><span>Menu is Loading, Please wait</span><md-progress-circular md-mode=\"indeterminate\" md-diameter=\"20px\"></md-menu-item></section><div ng-show=\"!ngShowLoading && !ngIsError\"><section><div layout=\"row\" layout-align=\"start center\" flex class=\"search-input\"><span class=\"bt-search\"><i class=\"material-icons md-fab-icon\">search</i></span><md-input-container md-no-float><label>Search</label><input flex ng-model=\"filterMenu\"><div class=\"hint\"><span ng-hide=\"filterMenu\">Search over below Menu...</span> <span ng-show=\"filterMenu\" class=\"active\">To clear search, click on 'X' button</span></div><md-button ng-show=\"filterMenu\" ng-click=\"filterMenu=''\" class=\"md-icon-button close-button\"><i class=\"material-icons md-fab-icon\">close</i></md-button></md-input-container></div></section><section ng-repeat=\"menuItem in ngModel | orderBy: 'order' track by $index\" ng-init=\"menuItem.order=(menuItem.order===undefined)?0:menuItem.order\"><ng-md-menu-group ng-filter=\"filterMenu\" ng-model=\"menuItem\"></section></div></div>"
   );
 
 }]);

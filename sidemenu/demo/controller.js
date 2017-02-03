@@ -57,6 +57,7 @@
     // menu itens
     $scope.itemsMenu = [{
       id: 1,
+	  order: 2,
       title: 'Menu',
       pages: [{
         'icon': 'list',
@@ -76,7 +77,7 @@
       }]
     }, {
       id: 2,
-      title: 'Menu2',
+	  title: 'Menu2',
       pages: [{
         'icon': 'list',
         'label': 'List All Queries',
@@ -84,14 +85,17 @@
       }, {
         'icon': 'add',
         'label': 'Add New Query',
-        'link': 'add'
+        'link': 'add',
+		order: 3
       }, {
         'icon': 'list',
         'label': 'Sample navigation',
-        'link': 'nav'
+        'link': 'nav',
+		order: 2
       }, {
         'icon': 'add',
-        'label': 'Add New Query'
+        'label': 'Add New Query',
+		'order': 1
       }]
     }];
     // scope here

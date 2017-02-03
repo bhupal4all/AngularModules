@@ -67,7 +67,7 @@
 			</md-input-container>
 		</div>
 	</section>
-	<section ng-repeat="menuItem in ngModel track by $index">
+	<section ng-repeat="menuItem in ngModel | orderBy: 'order' track by $index" ng-init="menuItem.order=(menuItem.order===undefined)?0:menuItem.order">
 		<ng-md-menu-group ng-filter='filterMenu' ng-model='menuItem'/>
 	</section>
 </div>

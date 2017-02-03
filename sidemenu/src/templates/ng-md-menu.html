@@ -1,5 +1,5 @@
 <md-list>
-	<md-menu-item ng-repeat="page in ngModel | filter:ngFilter">
+	<md-menu-item ng-repeat="page in ngModel | orderBy: 'order' | filter:ngFilter" ng-init="page.order=(page.order===undefined)?0:page.order">
 		<md-button ng-disabled='page.link === undefined' ui-sref="{{page.link === undefined ? '/' : page.link}}" class='md-primary' ui-sref-active="active">
 			<div layout="row" flex>
 				<p flex>{{page.label}}</p>

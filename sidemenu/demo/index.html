@@ -19,7 +19,7 @@
   </style>
   
 </head>
-<body ng-app='MyApp'>
+<body ng-app='MyApp' ng-clock>
 
 <div ng-controller="AppController" class="max-height main-content">
   <!-- toolbar -->
@@ -62,6 +62,7 @@
 
 	<script type="text/ng-template" id="templates/main.html">
 		<h1>this is main page</h1>
+		<textarea rows="20" cols="40" >{{itemsMenu|json}}</textarea>
 	</script>
 
 	<script type="text/ng-template" id="templates/list.html">
