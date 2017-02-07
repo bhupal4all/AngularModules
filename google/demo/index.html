@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>googlecharts</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <script src="../dist/googlecharts-dep.js"></script>
+  <script src="../dist/googlecharts-min.js"></script>
+  <script src="controller.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/googlecharts.css">
+</head>
+
+<body ng-app='MyApp' ng-clock>
+
+  <div ng-controller="AppController" class="max-height main-content">
+    <!-- toolbar -->
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+          <md-icon md-menu-align-target class="material-icons">menu</md-icon>
+        </md-button>
+        <h1>Material Angular</h1>
+      </div>
+    </md-toolbar>
+    <!-- -->
+
+    <!-- content -->
+    <div class="max-height">
+      <h1>Google Charts</h1>
+      <div>
+        <ng-google-chart ng-chart-type='PieChart' ng-chart-data='piechart.data' ng-chart-options='piechart.options'></ng-google-chart>
+      </div>
+      <div>
+        <ng-google-chart ng-chart-type='BarChart' ng-chart-data='barchart.data' ng-chart-options='barchart.options'></ng-google-chart>
+      </div>
+      <div>
+        <ng-google-chart ng-chart-type='ColumnChart' ng-chart-data='columnchart.data' ng-chart-options='columnchart.options'></ng-google-chart>
+      </div>
+      <div>
+        <ng-google-chart ng-chart-type='LineChart' ng-chart-data='linechart.data' ng-chart-options='linechart.options'></ng-google-chart>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
