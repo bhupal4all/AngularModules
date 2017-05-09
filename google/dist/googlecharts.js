@@ -1,26 +1,44 @@
-/* googlecharts - v1.0.0 - 2017-02-07 */
+/* googlecharts - v1.0.0 - 2017-02-08 */
 
 angular.module('GoogleCharts', []);
+angular.module('GoogleCharts', ['googlechart']);
+
 angular.module('GoogleCharts')
 	.directive('ngGoogleChart', ['$templateCache', function ($templateCache) {
 		return {
-			restrict: 'E',
+			restrict: 'AE',
 			scope: {
-				ngChartType: '@',
+				ngChartType: '=',
 				ngChartData: '=',
 				ngChartOptions: '='
 			},
 			template: '<div>Loading ...</div>',
-			controller: ['$scope', function ($scope) {
+			controller: ['$scope', '$timeout', function ($scope, $timeout) {
 				google.charts.load('current', { packages: ['corechart'] });
-
+				$scope.triggerDraw = false;
 				$scope.drawAnnotations = function () {
-					var data = google.visualization.arrayToDataTable($scope.ngChartData);
-					var chart = new google.visualization[$scope.ngChartType]($scope.div);
+					if ($scope.triggerDraw) {
+						$timeout(function () {
+							// var data = google.visualization.arrayToDataTable($scope.ngChartData);
+							var data = new google.visualization.DataTable();
+							angular.forEach($scope.ngChartData.cols, function(value, key) {
+								data.addColumn(value.type, value.label);
+							});
 
-					google.visualization.events.addListener(chart, 'error', $scope.onError);
+							angular.forEach($scope.ngChartData.rows, function(value, key) {
+								var row = [];
+								angular.forEach(value.c, function(ivalue, ikey){
+									row.push(ivalue);
+								});
+								data.addRow(row);
+								console.log(row);
+							});
 
-					chart.draw(data, $scope.ngChartOptions);
+							var chart = new google.visualization[$scope.ngChartType]($scope.div);
+							google.visualization.events.addListener(chart, 'error', $scope.onError);
+							chart.draw(data, $scope.ngChartOptions);
+						}, 1000, true);
+					}
 				};
 
 				$scope.onError = function (id, message) {
@@ -33,6 +51,14 @@ angular.module('GoogleCharts')
 				post: function ($scope, ielement, iattrs) {
 					$scope.div = ielement[0].firstChild;
 					google.charts.setOnLoadCallback($scope.drawAnnotations);
+					$scope.triggerDraw = true;
+
+					$scope.$watch('ngChartData', function (newd, oldd) {
+						$scope.drawAnnotations();
+					});
+					$scope.$watch('ngChartType', function (newd, oldd) {
+						$scope.drawAnnotations();
+					});	
 				}
 			}
 		};
